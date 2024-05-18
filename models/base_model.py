@@ -6,7 +6,12 @@ import uuid
 
 class BaseModel:
     """base model """
-    def __init__(self):
+    def __init__(self, *args, **kargs):
+        if kargs:
+            for key, value in kargs.items():
+                if key != '__class__':
+                    setattr(self, key, value)
+
         self.id = uuid.uuid4()
         self.created_at = datetime.datetime.now()
         self.update_at = datetime.datetime.now()
