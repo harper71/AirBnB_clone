@@ -36,6 +36,7 @@ class BaseModel:
 
         else:
             storage.new()
+
         self.id = uuid.uuid4()
         self.created_at = datetime.datetime.now()
         self.update_at = datetime.datetime.now()
