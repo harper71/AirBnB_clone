@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""base model of the airbnb project"""
 import datetime
 import uuid
 from models import storage
-"""base model of the airbnb project"""
 
 
 class BaseModel:
