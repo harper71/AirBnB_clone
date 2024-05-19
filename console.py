@@ -22,9 +22,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def help(self):
-        """Quit command to exit the program"""
         pass
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
