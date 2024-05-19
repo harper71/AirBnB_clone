@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-'''
-The initializer of my package
-'''
-from engine.file_storage import FileStorage
+"""The initializer of my package"""
+from models.engine.file_storage import FileStorage
 
 storage = FileStorage()
 
