@@ -4,7 +4,6 @@ import json
 import os
 from models.base_model import BaseModel
 from datetime import datetime
-from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
@@ -20,9 +19,13 @@ class FileStorage:
     __objects = {}
 
     def all(self):
+        """all objects"""
+
         return FileStorage.__objects
 
     def new(self, obj):
+        """new class created"""
+
         obj_cls_name = obj.__class__.__name__
 
         key = "{}.{}".format(obj_cls_name, obj.id)
@@ -32,6 +35,7 @@ class FileStorage:
     @staticmethod
     def convert_datetimes(obj):
         """converts the datetime to a string"""
+
         if isinstance(obj, dict):
             return {k: FileStorage.convert_datetimes(v)
                     for k, v in obj.items()}
@@ -43,6 +47,7 @@ class FileStorage:
 
     def save(self):
         """serializes the json file"""
+
         obj_dict = {}
 
         for key, value in FileStorage.__objects.items():
@@ -54,6 +59,7 @@ class FileStorage:
 
     def reload(self):
         """deserializes the json file"""
+
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as file:
                 obj_dict = json.load(file)
