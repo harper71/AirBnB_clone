@@ -66,9 +66,6 @@ class BaseModel:
         all_atributes["created_at"] = self.created_at.isoformat()
         all_atributes["updated_at"] = self.updated_at.isoformat()
 
-        for key, values in self.__dict__.items():
-            all_atributes[key] = values
-
         return all_atributes
 
     def __str__(self):
