@@ -170,6 +170,48 @@ class HBNBCommand(cmd.Cmd):
         setattr(obj, attr_name, attr_value)
         storage.save()
 
+    def default(self, line):
+        """Handle commands in classes"""
+        args = line.split(".")
+        if len(args) == 2:
+            class_name, command = args[0], args[1]
+            if command == "all()":
+                self.do_all(class_name)
+            elif command == "count()":
+                self.do_count(class_name)
+            elif command.startswith("show(") and command.endswith(")"):
+                instance_id = command[5:-1]
+                self.do_show(f"{class_name} {instance_id}")
+            elif command.startswith("destroy(") and command.endswith(")"):
+                instance_id = command[8:-1]
+                self.do_destroy(f"{class_name} {instance_id}")
+            elif command.startswith("update(") and command.endswith(")"):
+                params = command[7:-1].split(", ")
+                if len(params) == 3:
+                    self.do_update(
+                        f"{class_name} {params[0]} {params[1]} {params[2]}")
+                else:
+                    print("*** Unknown syntax:", line)
+            else:
+                print("*** Unknown syntax:", line)
+        else:
+            print("*** Unknown syntax:", line)
+
+    def do_count(self, arg):
+        """Counts the number of instances of a specified class"""
+
+        count = 0
+        all_objects = storage.all()
+        class_name = arg.split()[0]
+
+        if class_name not in self.classes:
+            print("** class doesn't exist **")
+            return
+
+        for key in all_objects:
+            if key.startswith(class_name + "."):
+                count += 1
+
 
 if __name__ == '__main__':
 
