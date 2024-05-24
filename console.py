@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """console of the clone app"""
 import cmd
-import cmd
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
