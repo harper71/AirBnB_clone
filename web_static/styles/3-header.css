@@ -4,9 +4,12 @@ header {
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
 }
-.logo {
-    background: url("https: //s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/logo.png") no-repeat left center;
-    background-size: contain;
+#logo {
+    height: 100%;
+    width: 142px;
+    background-image: url("../images/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
     align-items: left;
     vertical-align: middle;
     margin-left: 20px;
